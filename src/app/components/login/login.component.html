@@ -1,0 +1,29 @@
+<form  novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field>
+      <input matInput 
+      ngModel
+       placeholder="Card Number"
+        name="cardNumber"
+        required
+        #cardNumber="ngModel">
+    </mat-form-field>
+    <div *ngIf="(!cardNumber.valid && cardNumber.errors && (cardNumber.dirty || cardNumber.touched))">
+   <p *ngIf="cardNumber.errors.required">Card Number is required</p>
+</div>
+    <mat-form-field >
+        <input matInput placeholder="PIN"
+        ngModel
+         name="pin"
+          required
+          #pin="ngModel"> 
+       </mat-form-field>
+       <div 
+       *ngIf="(!pin.valid && pin.errors && (pin.dirty || pin.touched))">
+      <p *ngIf="pin.errors.required">Pin is required</p>
+  </div>
+       <button type="submit" mat-button [disabled]="f.invalid">Submit</button>
+  </form>
+
+
+
+

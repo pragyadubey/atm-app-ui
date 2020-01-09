@@ -1,0 +1,20 @@
+<form novalidate (ngSubmit)="withdrawAmount(f)" #f="ngForm">
+<mat-form-field>
+    <input matInput
+    ngModel
+    name="amount"
+    required
+    placeholder="Enter Amount"
+    pattern="^[0-9]*$"
+     #amount="ngModel">
+</mat-form-field> 
+<div *ngIf="(!amount.valid && amount.errors && (amount.dirty || amount.touched))">
+        <p *ngIf="amount.errors.required">Amount is required.</p>
+        <p *ngIf="amount.errors.pattern">Please enter number.</p>
+    </div>
+
+
+
+<button type="submit" mat-button [disabled]="f.invalid" >Submit
+</button>
+</form>
